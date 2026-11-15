@@ -31,8 +31,8 @@ function MovieList() {
           genre="Sci-Fi"
           rating={8.7}
           poster="/posters/interstellar.svg"
-          available="false"
-        />
+          available={false}       
+          />
         <MovieCard
           name="Parasite"
           year={2019}
@@ -49,6 +49,7 @@ function MovieList() {
           genre="Animation"
           poster="/posters/toy-story.svg"
           available={true}
+          rating={8.3}
         />
         <MovieCard
           title="The Dark Knight"
