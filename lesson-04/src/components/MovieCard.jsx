@@ -3,6 +3,7 @@ import "./MovieCard.css";
 
 function MovieCard({ title, year, duration, genre, rating, poster, available }) {
   const [liked, setLiked] = useState(false);
+  const [myRating, setMyRating] = useState(0);
 
 function handleLike() {
   setLiked(!liked);
@@ -26,6 +27,30 @@ function handleLike() {
         <div className="movie-card__footer">
           <span className="movie-card__genre">{genre}</span>
           <span className="movie-card__rating">★ {rating}</span>
+          <div className="my-rating"
+          style={{
+            display: "flex",
+            flexWrap: "nowrap",
+            alignItems: "center",
+            gap: "2px",
+          }}>
+  {[1, 2, 3, 4, 5].map((star) => (
+    <button
+      key={star}
+      type="button"
+      onClick={() => setMyRating(myRating === star ? 0 : star)}
+      style={{
+        color: star <= myRating ? "gold" : "gray",
+        fontSize: "18px",
+        cursor: "pointer",
+        background: "none",
+        border: "none",
+      }}
+    >
+      ★
+    </button>
+  ))}
+</div>
         </div>
       </div>
     </article>
