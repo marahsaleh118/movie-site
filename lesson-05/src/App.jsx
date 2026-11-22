@@ -30,6 +30,8 @@ function App() {
   }
   shownMovies = [...shownMovies].sort(compareMovies);
 
+  const isFiltered = onlyAvailable || genre !== "all" || text !== "";
+
   function compareMovies(a, b) {
     if (sortBy === "year") {
       return b.year - a.year;
@@ -44,11 +46,23 @@ function App() {
     setOnlyAvailable(!onlyAvailable);
   }
 
+  function resetFilters() {
+    setOnlyAvailable(false);
+    setQuery("");
+    setGenre("all");
+  }
+
   return (
     <>
       <Header />
       <main className="page container">
-        ...
+        <section className="page__intro">
+          <h1>הקטלוג</h1>
+          <p>סרטים שכדאי לראות — הישנים הטובים והחדשים.</p>
+        </section>
+
+        <MovieList title="הכי מדורגים" movies={topRated} />
+
         <div className="toolbar">
           <SearchBar
             query={query}
@@ -64,9 +78,19 @@ function App() {
           >
             רק זמינים לצפייה
           </button>
+          {isFiltered && (
+            <button className="btn" onClick={resetFilters}>
+              ניקוי
+            </button>
+          )}
         </div>
 
-        ...
+        <MovieList
+          title={`כל הסרטים (${shownMovies.length})`}
+          movies={shownMovies}
+        />
+
+        <AddMovieForm />
       </main>
       <Footer />
     </>
