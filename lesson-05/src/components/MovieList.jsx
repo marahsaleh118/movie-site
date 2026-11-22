@@ -8,7 +8,7 @@ function MovieList({ title, movies }) {
       <div className="movie-list__grid">
         {movies.map(movie => (
           <MovieCard
-          key={movie.id}
+          key={movie}
             title={movie.title}
             year={movie.year}
             duration={movie.duration}

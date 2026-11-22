@@ -1,4 +1,10 @@
-...
+import { useState } from "react";
+import Header from "./components/Header.jsx";
+import Footer from "./components/Footer.jsx";
+import MovieList from "./components/MovieList.jsx";
+import SearchBar from "./components/SearchBar.jsx";
+import AddMovieForm from "./components/AddMovieForm.jsx";
+import { movies } from "./data/movies.js";
 
 function App() {
   const [onlyAvailable, setOnlyAvailable] = useState(false);
